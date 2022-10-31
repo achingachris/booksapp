@@ -1,31 +1,23 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
-import { View, Text, ActivityIndicator, FlatList } from 'react-native'
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  FlatList,
+  SafeAreaView,
+} from 'react-native'
+import Home from './src/Index'
+import NavApp from './src/MainNavigation'
+import SearchBar from './src/Search'
+
 export default function Books() {
   const [isLoading, setIsLoading] = useState([])
   const [data, setData] = useState(true)
-  const [usersData, setUsersData] = useState([])
-  const getData = () => {
-    fetch('https://fudap-books-api.herokuapp.com/books')
-      .then((response) => response.json())
-      .then((data) => setData(data))
-    setIsLoading(false)
-  }
-  useEffect(() => {
-    getData()
-  }, [])
-  const renderItem = ({ item }) => {
-    return <Text>{item.title}</Text>
-  }
+
   return (
-    <View>
-      {isLoading && <ActivityIndicator size={38} />}
-      {data && (
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id.toString()}
-        />
-      )}
-    </View>
+    <NavigationContainer>
+      <NavApp />
+    </NavigationContainer>
   )
 }
