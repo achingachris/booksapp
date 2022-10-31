@@ -1,6 +1,7 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "description": "React Native Template Project",
+  "proxy":"https://fudap-books-api.herokuapp.com/books/",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
